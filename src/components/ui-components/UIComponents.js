@@ -2,9 +2,11 @@
 import React from 'react'
 
 import './UIComponents.css'
+import Control from './Control'
 import { CONTROLS } from '../../constants/controls'
 
-const UIComponents = () => {
+const UIComponents = (props) => {
+  const {onControlDrop} = props
   return (
     <div className="section ui-components">
       <div className="title">UI Components</div>
@@ -12,7 +14,7 @@ const UIComponents = () => {
         <ul>
           {CONTROLS.map((control, key) =>
             <li key={key}>
-              <button type="button" className="control-btn">{control.label}</button>
+              <Control control={control} onControlDrop={onControlDrop}/>
             </li>
           )}
         </ul>

@@ -11,7 +11,7 @@
 }
 .col-2{
   flex: 2;
-  background-color: #fff;
+  background-color: #efefef;
 }
 .col-3{
   flex: 1;
@@ -23,9 +23,7 @@
   font-size: 16px;
   font-weight: 500;
   padding: 8px 16px;
-}
-.page-component-explorer .content{
-  min-height: 100px;
+  text-align: center;
 }
 .content{
   padding: 8px 16px;
@@ -37,32 +35,4 @@
 }
 .content ul li{
   padding: 4px 0px;
-}
-.page-title{
-  background-color: #17a2b8;
-  padding: 4px 8px;
-  border-radius: 0px 16px 16px 0px;
-  color: #fff;
-}
-.control-btn{
-  border: 2px solid #17a2b8;
-  background-color: #fff;
-  color: #17a2b8;
-  padding: 4px 8px;
-  cursor: pointer;
-  outline: none;
-  width: 100%;
-  font-weight: normal;
-}
-
-.plus-btn{
-  border: 1px solid #17a2b8;
-  background-color: #fff;
-  color: #17a2b8;
-  cursor: pointer;
-  outline: none;
-}
-.control-btn:hover, .control-btn:focus{
-  background-color: #17a2b8;
-  color: #fff;
 }

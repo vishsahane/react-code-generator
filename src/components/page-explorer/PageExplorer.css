@@ -1,0 +1,28 @@
+
+.page-component-explorer .content{
+  min-height: 100px;
+}
+
+.plus-btn{
+  border: 1px solid #17a2b8;
+  background-color: #fff;
+  color: #17a2b8;
+  cursor: pointer;
+  outline: none;
+}
+
+.page-title-btn{
+  border: 2px solid #17a2b8;
+  background-color: #fff;
+  color: #17a2b8;
+  padding: 4px 8px;
+  cursor: pointer;
+  outline: none;
+  width: 100%;
+  font-weight: normal;
+  border-radius: 0px 16px 16px 0px;
+}
+.page-title-btn:hover, .page-title-btn:focus, .page-title-btn.selected{
+  background-color: #17a2b8;
+  color: #fff;
+}

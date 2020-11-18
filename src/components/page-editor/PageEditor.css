@@ -1,0 +1,24 @@
+.page-editor{
+  height: 100%;
+}
+.page-editor .content{
+  height: calc(100% - 70px);
+  background-color: #fff;
+  border: 2px solid #ddd;
+  margin: 8px 16px;
+  color: #000;
+}
+.btn-dropped-control{
+  border: 2px solid #ddd;
+  background-color: #fff;
+  color: #000;
+  padding: 4px 8px;
+  cursor: pointer;
+  outline: none;
+  width: 100%;
+  font-weight: normal;
+}
+.btn-dropped-control.selected{
+  background-color: #bdbdbd;
+  color: #fff;
+}

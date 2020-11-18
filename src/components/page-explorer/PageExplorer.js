@@ -13,8 +13,12 @@ const PageExplorer = (props) => {
       </div>
       <div className="content">
         <ul>
-          {pages.map(page =>
-            <li className="page-title">{page.name}</li>
+          {pages.map((page,key)=>
+            <li key={key}>
+              <button className={`page-title-btn `+ (page.isSelected? 'selected': '')}>
+                {page.name}
+              </button>
+            </li>
           )}
         </ul>
       </div>
