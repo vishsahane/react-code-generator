@@ -1,0 +1,11 @@
+.property-row{
+  display: flex;
+  border: 1px solid #eee;
+  padding: 4px 8px !important;
+}
+.property-name{
+  flex: 0 0 100px;
+}
+.property-value input, .property-value textarea, .property-value select{
+  width: 100%;
+}

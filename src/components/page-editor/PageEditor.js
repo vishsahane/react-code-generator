@@ -5,8 +5,8 @@ import { useDrop } from 'react-dnd'
 import './PageEditor.css'
 
 const PageEditor = (props) => {
-  const { selectedPage } = props
-  console.log("selectedPage", selectedPage)
+  const { pages, setPages } = props
+  let selectedPage = pages.find(page => page.isSelected)
   const [{ canDrop, isOver }, drop] = useDrop({
     accept: 'UICOMPONENT',
     drop: () => ({ name: 'Dustbin' }),
@@ -23,9 +23,17 @@ const PageEditor = (props) => {
   else if (canDrop) {
     backgroundColor = 'darkkhaki';
   }
-  const onControlSelection = (control, key) => {
-
-    control.isSelected = true
+  const onControlSelection = (controlIndex) => {
+    const updatedPages = pages.map((page) => {
+      if(page.isSelected){
+        let updatedControls = page.controls.map((control,index) => ({...control, isSelected: (controlIndex === index)}))
+        return {...page, controls:updatedControls}
+      } else{
+        return page
+      }
+    })
+    console.log("updatedPages", updatedPages,controlIndex)
+    setPages(updatedPages)
   }
 
   return (
@@ -33,11 +41,11 @@ const PageEditor = (props) => {
       <div className="title">Page Editor</div>
       <div className="content" ref={drop} >
         <ul>
-          {selectedPage && selectedPage.controls.map((control, key) =>
-            <li>
+          {selectedPage && selectedPage.controls.map((control, controlIndex) =>
+            <li key={controlIndex}>
               <button
                 className={'btn-dropped-control ' + (control.isSelected ? 'selected': '')}
-                onClick={()=>{selectedPage.controls[key].isSelected=true}}>
+                onClick={()=>{onControlSelection(controlIndex)}}>
                 {control.label}
               </button>
             </li>

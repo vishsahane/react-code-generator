@@ -22,7 +22,7 @@
   font-weight: normal;
   border-radius: 0px 16px 16px 0px;
 }
-.page-title-btn:hover, .page-title-btn:focus, .page-title-btn.selected{
+.page-title-btn.selected{
   background-color: #17a2b8;
   color: #fff;
 }

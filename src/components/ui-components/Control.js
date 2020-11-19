@@ -3,14 +3,23 @@ import React from 'react'
 import { useDrag } from 'react-dnd'
 
 const Control = (props) => {
-  const { control, onControlDrop } = props
+  const { control, pages,setPages } = props
   const [{ isDragging }, drag] = useDrag({
     item: { control: control, type: 'UICOMPONENT' },
     end: (item, monitor) => {
       const dropResult = monitor.getDropResult();
       if (item && dropResult) {
         //alert(`You dropped ${item.name} into ${dropResult.name}!`);
-        onControlDrop(item, dropResult)
+        const updatedPages = pages.map((page, index) => {
+          if(page.isSelected){
+            let updatedControls = page.controls.map(control => ({...control, isSelected: false}))
+            updatedControls.push({...item.control, isSelected: true})
+            return {...page, controls:updatedControls}
+          } else{
+            return page
+          }
+        })
+        setPages(updatedPages)
       }
     },
     collect: (monitor) => ({
