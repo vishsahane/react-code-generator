@@ -4,13 +4,10 @@ import React from 'react'
 import './PageExplorer.css'
 
 const PageExplorer = (props) => {
-  const { pages, setPages } = props
+  const { pages, selectedPath, setSelectedPath} = props
+  console.log("pageExplorer",selectedPath , selectedPath.charAt(0))
   const onPageSelection = (pageIndex) => {
-    let updatedPages = pages.map((page,index) => {
-      return {...page, isSelected: (pageIndex === index)}
-    })
-    console.log("updatedPages", updatedPages, pageIndex)
-    setPages(updatedPages)
+    setSelectedPath(pageIndex.toString())
   }
   return (
     <div className="section page-component-explorer">
@@ -22,7 +19,7 @@ const PageExplorer = (props) => {
         <ul>
           {pages.map((page,pageIndex)=>
             <li key={pageIndex}>
-              <button className={`page-title-btn `+ (page.isSelected? 'selected': '')}
+              <button className={`page-title-btn `+ (selectedPath.charAt(0) == pageIndex? 'selected': '')}
               onClick={()=> onPageSelection(pageIndex)}>
                 {page.name}
               </button>

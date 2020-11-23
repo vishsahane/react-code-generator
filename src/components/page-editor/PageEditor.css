@@ -15,10 +15,11 @@
   padding: 4px 8px;
   cursor: pointer;
   outline: none;
-  width: 100%;
+  width: calc(100% - 16px);
   font-weight: normal;
+  margin-bottom: 8px;
 }
-.btn-dropped-control.selected{
+.page-editor .selected{
   background-color: #bdbdbd;
   color: #fff;
 }

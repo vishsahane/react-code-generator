@@ -1,12 +1,15 @@
 
 import React from 'react'
 import { useDrop } from 'react-dnd'
+import _ from 'lodash'
 
 import './PageEditor.css'
+import Control from './Control'
 
 const PageEditor = (props) => {
-  const { pages, setPages } = props
-  let selectedPage = pages.find(page => page.isSelected)
+  const { pages, selectedPath, setSelectedPath } = props
+  let selectedPage = pages[selectedPath.charAt(0)]
+
   const [{ canDrop, isOver }, drop] = useDrop({
     accept: 'UICOMPONENT',
     drop: () => ({ name: 'Dustbin' }),
@@ -23,33 +26,26 @@ const PageEditor = (props) => {
   else if (canDrop) {
     backgroundColor = 'darkkhaki';
   }
-  const onControlSelection = (controlIndex) => {
-    const updatedPages = pages.map((page) => {
-      if(page.isSelected){
-        let updatedControls = page.controls.map((control,index) => ({...control, isSelected: (controlIndex === index)}))
-        return {...page, controls:updatedControls}
-      } else{
-        return page
-      }
-    })
-    console.log("updatedPages", updatedPages,controlIndex)
-    setPages(updatedPages)
+  const onControlSelection = (event, controlPath) => {
+    //console.log("controlPath", controlPath)
+    event.stopPropagation()
+    setSelectedPath(controlPath)
   }
+  const conrtolList = selectedPage && selectedPage.controls.map((control, controlIndex) => {
+    return <li key={controlIndex}>
+      <Control control={control} onControlSelection={onControlSelection}
+        controlPath={`${selectedPath.charAt(0)}.controls.${controlIndex}`}
+        selectedPath={selectedPath} />
+    </li>
+  })
 
   return (
     <div className="section page-editor">
       <div className="title">Page Editor</div>
-      <div className="content" ref={drop} >
+      <div className={'content ' + (selectedPath.length === 1 ? 'selected' : '')}
+        onClick={(event) => onControlSelection(event, selectedPath.charAt(0))} ref={drop} >
         <ul>
-          {selectedPage && selectedPage.controls.map((control, controlIndex) =>
-            <li key={controlIndex}>
-              <button
-                className={'btn-dropped-control ' + (control.isSelected ? 'selected': '')}
-                onClick={()=>{onControlSelection(controlIndex)}}>
-                {control.label}
-              </button>
-            </li>
-          )}
+          {conrtolList}
         </ul>
         {isActive ? 'Release to drop component' : 'Drag UI Component here...'}
       </div>
