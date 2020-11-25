@@ -49,6 +49,10 @@ const PageEditor = (props) => {
         </ul>
         {isActive ? 'Release to drop component' : 'Drag UI Component here...'}
       </div>
+      <div className="button-bar">
+        <button className="secondary-btn code-btn">Generate</button>
+        <button className="standard-btn code-btn">Preview</button>
+      </div>
     </div>
   )
 }

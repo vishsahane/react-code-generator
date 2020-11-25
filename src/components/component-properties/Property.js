@@ -17,10 +17,10 @@ const Property = (props) => {
   let propertyControl = ''
   switch (type) {
     case 'text':
-      propertyControl = <input type="text" onChange={onPropertyChange} value={value}/>
+      propertyControl = <input type="text" className="standard-input" onChange={onPropertyChange} value={value}/>
       break
     case 'dropdown':
-      propertyControl = <select>
+      propertyControl = <select className="standard-input">
         {options.map((option, optionKey) => <option value={option.value}>{option.label}</option>)}
       </select>
       break

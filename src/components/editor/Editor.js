@@ -53,7 +53,7 @@ const Editor = () => {
     <div className="container">
       <div className="flex">
         <div className="col-1">
-          <PageExplorer pages={pages} selectedPath={selectedPath}
+          <PageExplorer pages={pages} setPages={setPages} selectedPath={selectedPath}
             setSelectedPath={setSelectedPath} />
           <UIComponents pages={pages} setPages={setPages} selectedPath={selectedPath}
             setSelectedPath={setSelectedPath} />

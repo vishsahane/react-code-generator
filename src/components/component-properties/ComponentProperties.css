@@ -1,11 +1,16 @@
+.property-value .standard-input{
+  width:100%;
+  padding: 0px 4px;
+}
 .property-row{
   display: flex;
   border: 1px solid #eee;
-  padding: 4px 8px !important;
+  padding: 4px 16px !important;
+  align-items: baseline;
 }
 .property-name{
   flex: 0 0 100px;
 }
-.property-value input, .property-value textarea, .property-value select{
-  width: 100%;
+.property-value{
+  flex:1
 }
