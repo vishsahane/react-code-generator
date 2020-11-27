@@ -9,14 +9,20 @@ const Property = (props) => {
   let propertyPath = `${selectedPath}.properties.${propertyKey}`
   const onPropertyChange = (event) => {
     //console.log("event", event, event.target.value)
-    let updatedPages =[...pages]
-    updatedPages = _.set(updatedPages, propertyPath, {..._.get(updatedPages, propertyPath),value: event.target.value})
+    //let updatedPages =[...pages]
+    let updatedPages = JSON.parse(JSON.stringify(pages))
+    let oldProperty = _.get(updatedPages, propertyPath)
+    let updatedProperty = {...oldProperty,value: event.target.value}
+    
+    console.log("XXXXXXXXX1", selectedPath, pages, oldProperty, updatedProperty)
+    updatedPages = _.set(updatedPages, propertyPath, updatedProperty)
     setPages(updatedPages)
-    console.log("UPPROPERTY", propertyPath,{..._.get(updatedPages, propertyPath),value: event.target.value})
+    console.log("XXXXXXXXX2", propertyPath, updatedPages)
   }
   let propertyControl = ''
   switch (type) {
     case 'text':
+    case 'object':
       propertyControl = <input type="text" className="standard-input" onChange={onPropertyChange} value={value}/>
       break
     case 'dropdown':

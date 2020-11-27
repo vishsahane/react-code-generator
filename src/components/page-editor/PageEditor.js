@@ -26,6 +26,12 @@ const PageEditor = (props) => {
   else if (canDrop) {
     backgroundColor = 'darkkhaki';
   }
+  const generateCode = () => {
+    console.log("generateCode", pages)
+  }
+  const previewCode = () => {
+    console.log("previewCode", pages)
+  }
   const onControlSelection = (event, controlPath) => {
     //console.log("controlPath", controlPath)
     event.stopPropagation()
@@ -50,8 +56,8 @@ const PageEditor = (props) => {
         {isActive ? 'Release to drop component' : 'Drag UI Component here...'}
       </div>
       <div className="button-bar">
-        <button className="secondary-btn code-btn">Generate</button>
-        <button className="standard-btn code-btn">Preview</button>
+        <button className="secondary-btn code-btn" onClick={()=>generateCode()}>Generate</button>
+        <button className="standard-btn code-btn" onClick={()=>previewCode()}>Preview</button>
       </div>
     </div>
   )
