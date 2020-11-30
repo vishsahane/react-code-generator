@@ -1,14 +1,14 @@
 
 export const CONTROLS = [
   {
-    label: 'Button', name: 'button', isContainer: false,
+    label: 'Button', name: 'button', isContainer: false, isSelfClosing: false,
     properties: [
       { label: 'name', name: 'name', type: 'text', required: false, value: '' },
       { label: 'id', name: 'id', type: 'text', required: false, value: '' },
       { label: 'className', name: 'className', type: 'string', required: false, value: '' },
       { label: 'title', name: 'title', type: 'text', required: true, value: '' },
       { label: 'Text', name: 'text', type: 'text', required: false, value: '' },
-      { label: 'Custom Style', name: 'customStyle', type: 'object', required: false, value: '' },
+      { label: 'Custom Style', name: 'style', type: 'object', required: false, value: '' },
       {
         label: 'type', name: 'type', type: 'dropdown', required: false, value: '',
         options: [{ label: 'button', value: 'button' }, { label: 'submit', value: 'submit' }, { label: 'reset', value: 'reset' }]
@@ -24,21 +24,21 @@ export const CONTROLS = [
     ]
   },
   {
-    label: 'Label', name: 'label', isContainer: false,
+    label: 'Label', name: 'label', isContainer: false, isSelfClosing: false,
     properties: [
       { label: 'for', name: 'for', type: 'text', required: false, value: '' },
       { label: 'className', name: 'className', type: 'string', required: false, value: '' },
       { label: 'Text', name: 'text', type: 'text', required: false, value: '' },
-      { label: 'Custom Style', name: 'customStyle', type: 'object', required: false, value: '' },
+      { label: 'Custom Style', name: 'style', type: 'object', required: false, value: '' },
     ]
   },
   {
-    label: 'Input', name: 'input', isContainer: false,
+    label: 'Input', name: 'input', isContainer: false, isSelfClosing: true,
     properties: [
       { label: 'name', name: 'name', type: 'text', required: false, value: '' },
       { label: 'id', name: 'id', type: 'text', required: false, value: '' },
       { label: 'className', name: 'className', type: 'string', required: false, value: '' },
-      { label: 'Custom Style', name: 'customStyle', type: 'object', required: false, value: '' },
+      { label: 'Custom Style', name: 'style', type: 'object', required: false, value: '' },
       { label: 'Placeholder', name: 'placeholder', type: 'string', required: false, value: '' },
       {
         label: 'type', name: 'type', type: 'dropdown', required: false, value: '',
@@ -58,14 +58,14 @@ export const CONTROLS = [
     ]
   },
   {
-    label: 'Textarea', name: 'textarea', isContainer: false,
+    label: 'Textarea', name: 'textarea', isContainer: false, isSelfClosing: true,
     properties: [
       { label: 'name', name: 'name', type: 'text', required: false, value: '' },
       { label: 'id', name: 'id', type: 'text', required: false, value: '' },
       { label: 'rows', name: 'rows', type: 'text', required: false, value: '' },
       { label: 'cols', name: 'cols', type: 'text', required: false, value: '' },
       { label: 'className', name: 'className', type: 'string', required: false, value: '' },
-      { label: 'Custom Style', name: 'customStyle', type: 'object', required: false, value: '' },
+      { label: 'Custom Style', name: 'style', type: 'object', required: false, value: '' },
       { label: 'Placeholder', name: 'placeholder', type: 'string', required: false, value: '' },
       {
         label: 'disabled', name: 'disabled', type: 'dropdown', required: false, value: '',
@@ -78,10 +78,10 @@ export const CONTROLS = [
     ]
   },
   {
-    label: 'Div', name: 'div', isContainer: true,
+    label: 'Div', name: 'div', isContainer: true, isSelfClosing: false,
     properties: [
       { label: 'className', name: 'className', type: 'string', required: false, value: '' },
-      { label: 'Custom Style', name: 'customStyle', type: 'object', required: false, value: '' },
+      { label: 'Custom Style', name: 'style', type: 'object', required: false, value: '' },
       { label: 'Text', name: 'text', type: 'text', required: false, value: '' },
       {
         label: 'hidden', name: 'hidden', type: 'dropdown', required: false, value: '',
@@ -90,10 +90,10 @@ export const CONTROLS = [
     ]
   },
   {
-    label: 'Form', name: 'form', isContainer: true,
+    label: 'Form', name: 'form', isContainer: true, isSelfClosing: true,
     properties: [
       { label: 'className', name: 'className', type: 'string', required: false, value: '' },
-      { label: 'Custom Style', name: 'customStyle', type: 'object', required: false, value: '' },
+      { label: 'Custom Style', name: 'style', type: 'object', required: false, value: '' },
       {
         label: 'hidden', name: 'hidden', type: 'dropdown', required: false, value: '',
         options: [{ label: 'Yes', value: true }, { label: 'No', value: false }]
@@ -107,19 +107,19 @@ export const CONTROLS = [
     ]
   },
   {
-    label: 'Img', name: 'img', isContainer: false,
+    label: 'Img', name: 'img', isContainer: false, isSelfClosing: true,
     properties: [
       { label: 'className', name: 'className', type: 'string', required: false, value: '' },
-      { label: 'Custom Style', name: 'customStyle', type: 'object', required: false, value: '' },
+      { label: 'Custom Style', name: 'style', type: 'object', required: false, value: '' },
       { label: 'src', name: 'src', type: 'text', required: true, value: '' },
       { label: 'alt', name: 'alt', type: 'text', required: false, value: '' }
     ]
   },
   {
-    label: 'P', name: 'p', isContainer: false,
+    label: 'P', name: 'p', isContainer: false, isSelfClosing: false,
     properties: [
       { label: 'className', name: 'className', type: 'string', required: false, value: '' },
-      { label: 'Custom Style', name: 'customStyle', type: 'object', required: false, value: '' },
+      { label: 'Custom Style', name: 'style', type: 'object', required: false, value: '' },
       { label: 'Text', name: 'text', type: 'text', required: false, value: '' }
     ]
   }
