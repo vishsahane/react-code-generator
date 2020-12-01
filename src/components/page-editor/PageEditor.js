@@ -7,24 +7,38 @@ import './PageEditor.css'
 import Control from './Control'
 
 const PageEditor = (props) => {
-  const { pages, selectedPath, setSelectedPath } = props
+  const { pages, setPages, selectedPath, setSelectedPath } = props
   let selectedPage = pages[selectedPath.charAt(0)]
 
-  const [{ canDrop, isOver }, drop] = useDrop({
+  const [{ canDrop, isOver, isOverCurrent }, drop] = useDrop({
     accept: 'UICOMPONENT',
-    drop: () => ({ name: 'Dustbin' }),
+    drop(item, monitor) {
+      const didDrop = monitor.didDrop()
+      if (didDrop)
+        return
+      console.log("PAGE DROP", item, `${selectedPath.charAt(0)}`, didDrop)
+      onControlDrop(item.control, `${selectedPath.charAt(0)}`)
+    },
     collect: (monitor) => ({
       isOver: monitor.isOver(),
+      isOverCurrent: monitor.isOver({ shallow: true }),
       canDrop: monitor.canDrop(),
     }),
-  });
-  const isActive = canDrop && isOver;
-  let backgroundColor = '#222';
-  if (isActive) {
-    backgroundColor = 'darkgreen';
+  })
+
+  const isActive = canDrop && isOver
+  let backgroundColor = ''
+  if (isOverCurrent) {
+    backgroundColor = '#17a2b8'
   }
-  else if (canDrop) {
-    backgroundColor = 'darkkhaki';
+  const onControlDrop = (control, path) => {
+    let updatedPages = [...pages]
+    let selectedControl = _.get(updatedPages, path)
+    let updatedControl = { ...selectedControl, controls: [...selectedControl.controls, { ...control, controls: [] }] }
+    updatedPages = _.set(updatedPages, path, updatedControl)
+    setPages(updatedPages)
+    console.log("onControlDrop", path, updatedControl)
+    setSelectedPath(`${path}.controls.${updatedControl.controls.length - 1}`)
   }
   const generateCode = () => {
     console.log("generateCode", pages)
@@ -41,7 +55,7 @@ const PageEditor = (props) => {
     return <li key={controlIndex}>
       <Control control={control} onControlSelection={onControlSelection}
         controlPath={`${selectedPath.charAt(0)}.controls.${controlIndex}`}
-        selectedPath={selectedPath} />
+        selectedPath={selectedPath} onControlDrop={onControlDrop} />
     </li>
   })
 
@@ -49,6 +63,7 @@ const PageEditor = (props) => {
     <div className="section page-editor">
       <div className="title">Page Editor</div>
       <div className={'content ' + (selectedPath.length === 1 ? 'selected' : '')}
+        style={{ backgroundColor: backgroundColor }}
         onClick={(event) => onControlSelection(event, selectedPath.charAt(0))} ref={drop} >
         <ul>
           {conrtolList}
@@ -56,8 +71,8 @@ const PageEditor = (props) => {
         {isActive ? 'Release to drop component' : 'Drag UI Component here...'}
       </div>
       <div className="button-bar">
-        <button className="secondary-btn code-btn" onClick={()=>generateCode()}>Generate</button>
-        <button className="standard-btn code-btn" onClick={()=>previewCode()}>Preview</button>
+        <button className="secondary-btn code-btn" onClick={() => generateCode()}>Generate</button>
+        <button className="standard-btn code-btn" onClick={() => previewCode()}>Preview</button>
       </div>
     </div>
   )

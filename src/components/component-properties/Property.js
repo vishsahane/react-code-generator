@@ -5,7 +5,7 @@ import _ from 'lodash'
 const Property = (props) => {
   const {pages, setPages, property, selectedPath, propertyKey} = props
   const { label, type, options, value } = property
-  console.log("property", property)
+  //console.log("property", property)
   let propertyPath = `${selectedPath}.properties.${propertyKey}`
   const onPropertyChange = (event) => {
     //console.log("event", event, event.target.value)

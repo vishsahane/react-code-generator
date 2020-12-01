@@ -1,5 +1,5 @@
 
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 
 import './PageExplorer.css'
 import AddPage from './AddPage'
@@ -31,8 +31,7 @@ const PageExplorer = (props) => {
         </ul>
       </div>
       {showAddPage && <AddPage setShowModal={setShowAddPage} pages={pages}
-        setPages={setPages} selectedPath={selectedPath}
-        setSelectedPath={setSelectedPath} />}
+        setPages={setPages} setSelectedPath={setSelectedPath} />}
     </div>
   )
 }

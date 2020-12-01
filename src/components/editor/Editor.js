@@ -55,11 +55,10 @@ const Editor = () => {
         <div className="col-1">
           <PageExplorer pages={pages} setPages={setPages} selectedPath={selectedPath}
             setSelectedPath={setSelectedPath} />
-          <UIComponents pages={pages} setPages={setPages} selectedPath={selectedPath}
-            setSelectedPath={setSelectedPath} />
+          <UIComponents />
         </div>
         <div className="col-2">
-          <PageEditor pages={pages} selectedPath={selectedPath}
+          <PageEditor pages={pages} setPages={setPages} selectedPath={selectedPath}
             setSelectedPath={setSelectedPath} />
         </div>
         <div className="col-3">

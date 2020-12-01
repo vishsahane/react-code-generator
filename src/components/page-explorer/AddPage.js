@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { ModalDialogBox } from '../common'
 
 const AddPage = (props) => {
-  const { pages, setPages, selectedPath, setSelectedPath, setShowModal } = props
+  const { pages, setPages, setSelectedPath, setShowModal } = props
   const [pageTitle, setPageTitle] = useState('')
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -13,7 +13,7 @@ const AddPage = (props) => {
     let updatedPages = [...pages]
     updatedPages.push({ name: pageTitle, controls: [] })
     setPages(updatedPages)
-    setSelectedPath(updatedPages.length.toString())
+    setSelectedPath((updatedPages.length -1).toString())
   }
   return (
     <form onSubmit={(e) => handleSubmit(e)}>

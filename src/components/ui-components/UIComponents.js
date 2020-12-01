@@ -6,7 +6,6 @@ import Control from './Control'
 import { CONTROLS } from '../../constants/controls'
 
 const UIComponents = (props) => {
-  const {pages,setPages, selectedPath, setSelectedPath} = props
   return (
     <div className="section ui-components">
       <div className="title">UI Components</div>
@@ -14,8 +13,7 @@ const UIComponents = (props) => {
         <ul>
           {CONTROLS.map((control, key) =>
             <li key={key}>
-              <Control control={control} pages={pages} setPages={setPages}
-                selectedPath={selectedPath} setSelectedPath={setSelectedPath}/>
+              <Control control={control} />
             </li>
           )}
         </ul>
