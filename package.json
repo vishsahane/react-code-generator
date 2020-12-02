@@ -21,9 +21,9 @@
     "nodemon": "^2.0.6"
   },
   "scripts": {
-    "start": "node  ./server/server",
-    "server": "nodemon --prefix server",
-    "client": "npm start react-scripts",
+    "start": "node ./server/server",
+    "server": "nodemon ./server/server",
+    "client": "react-scripts start",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
