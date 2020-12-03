@@ -1,5 +1,4 @@
 /** @format */
-const fs = require("fs");
 
 module.exports = {
 	pascalCase: (str, splitting = " ") => {
@@ -18,12 +17,5 @@ module.exports = {
 	},
 	comparingTwoValues: (actualValue, expectedValue) => {
 		return actualValue === expectedValue;
-	},
-	createFolder: (path, folderName) => {
-		console.log("createFolder");
-		fs.mkdirSync(path + folderName, { recursive: true });
-	},
-	writeToFile: (path, fileName, content) => {
-		fs.writeFile(path + fileName, content);
-	},
+	}
 };

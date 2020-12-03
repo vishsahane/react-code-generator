@@ -5,9 +5,7 @@ const router = express.Router();
 const fs = require("fs");
 
 const {
-	pascalCase,
-	createFolder,
-	writeToFile,
+	pascalCase
 } = require("../../helpers/common-helper");
 const {
 	generateComponentTemplate,
@@ -22,14 +20,22 @@ router.post("/", (req, res) => {
 		const generatedComponent = [];
 		req.body.forEach((element) => {
 			const componentName = pascalCase(element.name);
-			const componentPath = GENERATED_PATH + componentName;
+			const componentPath = GENERATED_PATH + componentName + "/";
 
-			const previewPath = GENERATED_PATH + "Preview.js";
+			if (!fs.existsSync(componentPath)) {
+				fs.mkdirSync(componentPath, true);
+			}
+			
 			fs.writeFileSync(
-				componentPath + ".js",
+				componentPath + componentName + ".js",
 				generateComponentTemplate(element)
 			);
-			fs.writeFileSync(previewPath, generatePreviewTemplate(componentName));
+
+			fs.writeFileSync(
+				componentPath + "Preview.js",
+				generatePreviewTemplate(componentName)
+			);
+			
 			generatedComponent.push({ componentPath, componentName });
 		});
 
