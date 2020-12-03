@@ -14,4 +14,8 @@ handlebarsInstance.registerHelper(
 	}
 );
 
+handlebarsInstance.registerHelper("styleObject", function (value) {
+	return "{" + value + "}";
+});
+
 module.exports = handlebarsInstance;
