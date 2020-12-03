@@ -10,7 +10,7 @@ app.get("/", (req, res) => {
 //Define routes
 app.use(
 	"/api/generateComponentFile",
-	require("./server/routes/generate-component/generate-component")
+	require("./routes/generate-component/generate-component")
 );
 
 const PORT = process.env.PORT || 7000;
