@@ -1,18 +1,10 @@
 
-import React, { useState } from 'react'
+import React from 'react'
 
-import './Preview.css'
-import LoginForm from './LoginForm'
-import ContactUs from './ContactUs'
-
-const Preview = () => {
-  return (
-    <div className="container">
-      <h1>Preview is in progress!</h1>
-      <LoginForm />
-      <ContactUs />
-    </div>
-  )
+const Preview = (props) => {
+  return <div className="preview-container">
+    <h1>Generate the component first and then click on preview!</h1>
+  </div>
 }
 
 export default Preview
