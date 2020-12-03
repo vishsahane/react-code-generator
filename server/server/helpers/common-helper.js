@@ -1,5 +1,3 @@
-/** @format */
-
 module.exports = {
 	pascalCase: (str, splitting = " ") => {
 		return str

@@ -1,5 +1,3 @@
-/** @format */
-
 const express = require("express");
 const router = express.Router();
 const fs = require("fs");
@@ -35,7 +33,7 @@ router.post("/", (req, res) => {
 				componentPath + "Preview.js",
 				generatePreviewTemplate(componentName)
 			);
-			
+
 			generatedComponent.push({ componentPath, componentName });
 		});
 

@@ -1,5 +1,3 @@
-/** @format */
-
 const generateComponentHbsInstance = require("../../helpers/common-handlebars-instance");
 
 generateComponentHbsInstance.registerHelper("simpleElement", function (value) {

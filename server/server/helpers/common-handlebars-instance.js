@@ -1,5 +1,3 @@
-/** @format */
-
 const handlebarsInstance = require("handlebars");
 const { pascalCase, comparingTwoValues } = require("./common-helper");
 
