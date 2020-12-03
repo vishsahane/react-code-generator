@@ -19,17 +19,24 @@ const { GENERATED_PATH } = require("../../helpers/constant");
 
 router.post("/", (req, res) => {
 	try {
+		const generatedComponent = [];
 		req.body.forEach((element) => {
 			const componentName = pascalCase(element.name);
-			const componentPath = GENERATED_PATH + componentName + ".js";
-			// createFolder(generatedPath, componentName);
-			// fs.mkdirSync(generatedPath + componentName, { recursive: true });
-			const previewPath = GENERATED_PATH + componentName + "Preview" + ".js";
-			fs.writeFileSync(componentPath, generateComponentTemplate(element));
+			const componentPath = GENERATED_PATH + componentName;
+
+			const previewPath = GENERATED_PATH + "Preview.js";
+			fs.writeFileSync(
+				componentPath + ".js",
+				generateComponentTemplate(element)
+			);
 			fs.writeFileSync(previewPath, generatePreviewTemplate(componentName));
+			generatedComponent.push({ componentPath, componentName });
 		});
 
-		res.send(`component js generated`);
+		res.status(200).json({
+			message: "Component generated successfully",
+			generatedComponent,
+		});
 	} catch (error) {
 		return res.status(400).json({ errors: error });
 	}
