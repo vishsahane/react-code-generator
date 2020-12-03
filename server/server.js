@@ -3,8 +3,6 @@
 const express = require("express");
 const app = express();
 
-process.env["NODE_CONFIG_DIR"] = __dirname + "/config/";
-
 app.use(express.json({ extended: false }));
 
 app.get("/", (req, res) => {

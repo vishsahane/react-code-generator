@@ -3,19 +3,30 @@
 const express = require("express");
 const router = express.Router();
 const fs = require("fs");
-const config = require("config");
 
-const { pascalCase } = require("../../helpers/common-helper");
+const {
+	pascalCase,
+	createFolder,
+	writeToFile,
+} = require("../../helpers/common-helper");
 const {
 	generateComponentTemplate,
 } = require("./generate-component-handlebars-instance");
+const {
+	generatePreviewTemplate,
+} = require("../generate-preview/generate-preview-handlebars-instance");
+const { GENERATED_PATH } = require("../../helpers/constant");
 
 router.post("/", (req, res) => {
 	try {
 		req.body.forEach((element) => {
 			const componentName = pascalCase(element.name);
-			const componentPath = config.get("generatedPath") + componentName + ".js";
+			const componentPath = GENERATED_PATH + componentName + ".js";
+			// createFolder(generatedPath, componentName);
+			// fs.mkdirSync(generatedPath + componentName, { recursive: true });
+			const previewPath = GENERATED_PATH + componentName + "Preview" + ".js";
 			fs.writeFileSync(componentPath, generateComponentTemplate(element));
+			fs.writeFileSync(previewPath, generatePreviewTemplate(componentName));
 		});
 
 		res.send(`component js generated`);
