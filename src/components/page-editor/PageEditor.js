@@ -2,6 +2,8 @@
 import React from 'react'
 import { useDrop } from 'react-dnd'
 import _ from 'lodash'
+import axios from 'axios'
+import { Link } from "react-router-dom";
 
 import './PageEditor.css'
 import Control from './Control'
@@ -42,6 +44,13 @@ const PageEditor = (props) => {
   }
   const generateCode = () => {
     console.log("generateCode", pages)
+    axios.post('http://localhost:7000/api/generateComponentFile', pages)
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
   }
   const previewCode = () => {
     console.log("previewCode", pages)
@@ -72,7 +81,8 @@ const PageEditor = (props) => {
       </div>
       <div className="button-bar">
         <button className="secondary-btn code-btn" onClick={() => generateCode()}>Generate</button>
-        <button className="standard-btn code-btn" onClick={() => previewCode()}>Preview</button>
+        {/* <button className="standard-btn code-btn" onClick={() => previewCode()}>Preview</button> */}
+        <Link to="/preview" target="_blank" className="standard-btn code-btn">Preview</Link>
       </div>
     </div>
   )
