@@ -21,7 +21,7 @@ router.post("/", (req, res) => {
 			const componentPath = GENERATED_PATH + componentName + "/";
 
 			if (!fs.existsSync(componentPath)) {
-				fs.mkdirSync(componentPath, true);
+				fs.mkdirSync(componentPath, { recursive: true });
 			}
 			
 			fs.writeFileSync(
