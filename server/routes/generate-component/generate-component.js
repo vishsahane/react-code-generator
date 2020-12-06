@@ -11,14 +11,14 @@ const {
 const {
 	generatePreviewTemplate,
 } = require("../generate-preview/generate-preview-handlebars-instance");
-const { GENERATED_PATH } = require("../../helpers/constant");
+const { GENERATED_PATH } = require("../../../generate-path");
 
 router.post("/", (req, res) => {
 	try {
 		const generatedComponent = [];
 		req.body.forEach((element) => {
 			const componentName = pascalCase(element.name);
-			const componentPath = GENERATED_PATH + "/";
+			const componentPath = GENERATED_PATH;
 
 			if (!fs.existsSync(componentPath)) {
 				fs.mkdirSync(componentPath, { recursive: true });
