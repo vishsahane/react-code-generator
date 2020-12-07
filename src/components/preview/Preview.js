@@ -1,10 +1,12 @@
+import React, { useState } from 'react';
+import Page1 from './Page1';
 
-import React from 'react'
+const Preview = () => {
+  return (
+    <div className="preview-container">
+      <Page1 />
+    </div>
+  )
+};
 
-const Preview = (props) => {
-  return <div className="preview-container">
-    <h1>Generate the component first and then click on preview!</h1>
-  </div>
-}
-
-export default Preview
+export default Preview;

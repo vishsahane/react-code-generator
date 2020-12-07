@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React, { useState } from 'react'
 import { useDrop } from 'react-dnd'
 import _ from 'lodash'
 import axios from 'axios'
@@ -9,8 +9,10 @@ import './PageEditor.css'
 import Control from './Control'
 
 const PageEditor = (props) => {
-  const { pages, setPages, selectedPath, setSelectedPath } = props
-  let selectedPage = pages[selectedPath.charAt(0)]
+  const { pages, setPages, selectedPath, setSelectedPath, setShowSpinner } = props
+  const selectedPageIndex = selectedPath.charAt(0)
+  const selectedPage = pages[selectedPageIndex]
+  const [isGenerated, setIsGenerated] = useState(false)
 
   const [{ canDrop, isOver, isOverCurrent }, drop] = useDrop({
     accept: 'UICOMPONENT',
@@ -44,13 +46,22 @@ const PageEditor = (props) => {
   }
   const generateCode = () => {
     console.log("generateCode", pages)
-    axios.post('http://localhost:7000/api/generateComponentFile', pages)
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    })
+    setShowSpinner(true)
+    const payload = {
+      pages: pages,
+      selectedPageIndex: selectedPageIndex
+    }
+    axios.post('http://localhost:7000/api/generateComponentFile', payload)
+      .then(function (response) {
+        console.log(response)
+        setShowSpinner(false)
+        setIsGenerated(true)
+      })
+      .catch(function (error) {
+        console.log(error)
+        setShowSpinner(false)
+        alert("Failed to generate")
+      })
   }
   const previewCode = () => {
     console.log("previewCode", pages)
@@ -80,9 +91,11 @@ const PageEditor = (props) => {
         {isActive ? 'Release to drop component' : 'Drag UI Component here...'}
       </div>
       <div className="button-bar">
-        <button className="secondary-btn code-btn" onClick={() => generateCode()}>Generate</button>
+        <button className="secondary-btn code-btn" onClick={() => generateCode()}
+          disabled={!pages.length}>Generate</button>
         {/* <button className="standard-btn code-btn" onClick={() => previewCode()}>Preview</button> */}
-        <Link to="/preview" target="_blank" className="standard-btn code-btn">Preview</Link>
+        <Link to="/preview" target="_blank"
+          className={"standard-btn code-btn" + (isGenerated ? "" : " disabled")}>Preview</Link>
       </div>
     </div>
   )

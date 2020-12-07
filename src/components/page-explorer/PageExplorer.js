@@ -19,16 +19,20 @@ const PageExplorer = (props) => {
         <button className="plus-btn" onClick={() => setShowAddPage(true)}> + </button>
       </div>
       <div className="content">
-        <ul>
-          {pages.map((page, pageIndex) =>
-            <li key={pageIndex}>
-              <button className={`page-title-btn ` + (selectedPath.charAt(0) == pageIndex ? 'selected' : '')}
-                onClick={() => onPageSelection(pageIndex)}>
-                {page.name}
-              </button>
-            </li>
-          )}
-        </ul>
+        {pages.length ?
+          <ul>
+            {pages.map((page, pageIndex) =>
+              <li key={pageIndex}>
+                <button className={`page-title-btn ` + (selectedPath.charAt(0) == pageIndex ? 'selected' : '')}
+                  onClick={() => onPageSelection(pageIndex)}>
+                  {page.name}
+                </button>
+              </li>
+            )}
+          </ul>
+          :
+          <p className="note">Add the component first to see them here..</p>
+        }
       </div>
       {showAddPage && <AddPage setShowModal={setShowAddPage} pages={pages}
         setPages={setPages} setSelectedPath={setSelectedPath} />}
