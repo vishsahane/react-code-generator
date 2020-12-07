@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import Page1 from './Page1';
+import './Preview.css'
 
 const Preview = () => {
   return (
     <div className="preview-container">
-      <Page1 />
+    <div><button>button 1</button></div>
+    <div><input /></div>
+    <div><textarea /></div>
     </div>
   )
 };

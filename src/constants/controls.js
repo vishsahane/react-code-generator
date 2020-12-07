@@ -5,7 +5,7 @@ export const CONTROLS = [
     properties: [
       { label: 'name', name: 'name', type: 'text', required: false, value: '' },
       { label: 'id', name: 'id', type: 'text', required: false, value: '' },
-      { label: 'className', name: 'className', type: 'string', required: false, value: '' },
+      { label: 'className', name: 'className', type: 'text', required: false, value: '' },
       { label: 'title', name: 'title', type: 'text', required: true, value: '' },
       { label: 'Text', name: 'text', type: 'text', required: false, value: '' },
       { label: 'Custom Style', name: 'style', type: 'object', required: false, value: '' },
@@ -27,7 +27,7 @@ export const CONTROLS = [
     label: 'Label', name: 'label', isContainer: false, isSelfClosing: false,
     properties: [
       { label: 'for', name: 'for', type: 'text', required: false, value: '' },
-      { label: 'className', name: 'className', type: 'string', required: false, value: '' },
+      { label: 'className', name: 'className', type: 'text', required: false, value: '' },
       { label: 'Text', name: 'text', type: 'text', required: false, value: '' },
       { label: 'Custom Style', name: 'style', type: 'object', required: false, value: '' },
     ]
@@ -37,7 +37,7 @@ export const CONTROLS = [
     properties: [
       { label: 'name', name: 'name', type: 'text', required: false, value: '' },
       { label: 'id', name: 'id', type: 'text', required: false, value: '' },
-      { label: 'className', name: 'className', type: 'string', required: false, value: '' },
+      { label: 'className', name: 'className', type: 'text', required: false, value: '' },
       { label: 'Custom Style', name: 'style', type: 'object', required: false, value: '' },
       { label: 'Placeholder', name: 'placeholder', type: 'string', required: false, value: '' },
       {
@@ -64,7 +64,7 @@ export const CONTROLS = [
       { label: 'id', name: 'id', type: 'text', required: false, value: '' },
       { label: 'rows', name: 'rows', type: 'text', required: false, value: '' },
       { label: 'cols', name: 'cols', type: 'text', required: false, value: '' },
-      { label: 'className', name: 'className', type: 'string', required: false, value: '' },
+      { label: 'className', name: 'className', type: 'text', required: false, value: '' },
       { label: 'Custom Style', name: 'style', type: 'object', required: false, value: '' },
       { label: 'Placeholder', name: 'placeholder', type: 'string', required: false, value: '' },
       {
@@ -80,7 +80,7 @@ export const CONTROLS = [
   {
     label: 'Div', name: 'div', isContainer: true, isSelfClosing: false,
     properties: [
-      { label: 'className', name: 'className', type: 'string', required: false, value: '' },
+      { label: 'className', name: 'className', type: 'text', required: false, value: '' },
       { label: 'Custom Style', name: 'style', type: 'object', required: false, value: '' },
       { label: 'Text', name: 'text', type: 'text', required: false, value: '' },
       {
@@ -92,7 +92,7 @@ export const CONTROLS = [
   {
     label: 'Form', name: 'form', isContainer: true, isSelfClosing: true,
     properties: [
-      { label: 'className', name: 'className', type: 'string', required: false, value: '' },
+      { label: 'className', name: 'className', type: 'text', required: false, value: '' },
       { label: 'Custom Style', name: 'style', type: 'object', required: false, value: '' },
       {
         label: 'hidden', name: 'hidden', type: 'dropdown', required: false, value: '',
@@ -109,7 +109,7 @@ export const CONTROLS = [
   {
     label: 'Img', name: 'img', isContainer: false, isSelfClosing: true,
     properties: [
-      { label: 'className', name: 'className', type: 'string', required: false, value: '' },
+      { label: 'className', name: 'className', type: 'text', required: false, value: '' },
       { label: 'Custom Style', name: 'style', type: 'object', required: false, value: '' },
       { label: 'src', name: 'src', type: 'text', required: true, value: '' },
       { label: 'alt', name: 'alt', type: 'text', required: false, value: '' }
@@ -118,7 +118,7 @@ export const CONTROLS = [
   {
     label: 'P', name: 'p', isContainer: false, isSelfClosing: false,
     properties: [
-      { label: 'className', name: 'className', type: 'string', required: false, value: '' },
+      { label: 'className', name: 'className', type: 'text', required: false, value: '' },
       { label: 'Custom Style', name: 'style', type: 'object', required: false, value: '' },
       { label: 'Text', name: 'text', type: 'text', required: false, value: '' }
     ]

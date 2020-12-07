@@ -26,7 +26,7 @@ const Property = (props) => {
       propertyControl = <input type="text" className="standard-input" onChange={onPropertyChange} value={value}/>
       break
     case 'dropdown':
-      propertyControl = <select className="standard-input">
+      propertyControl = <select className="standard-input" onChange={onPropertyChange}>
         {options.map((option, optionKey) => <option value={option.value}>{option.label}</option>)}
       </select>
       break

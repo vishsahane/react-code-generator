@@ -21,7 +21,7 @@ const AddPage = (props) => {
         body={
           <div>
             <input type="text" className="standard-input" placeholder="Enter page title"
-              onChange={e => setPageTitle(e.target.value)} />
+              onChange={e => setPageTitle(e.target.value)} autoFocus/>
           </div>
         }
         footer={<React.Fragment>
