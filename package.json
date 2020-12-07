@@ -2,7 +2,7 @@
   "name": "react-code-generator",
   "version": "0.1.0",
   "private": true,
-  "main": "./server/server.js",
+  "main": "server",
   "dependencies": {
     "axios": "^0.21.0",
     "cors": "^2.8.5",
@@ -21,8 +21,8 @@
     "nodemon": "^2.0.6"
   },
   "scripts": {
-    "start": "node ./server/server",
-    "server": "nodemon ./server/server",
+    "start": "node server",
+    "server": "nodemon server",
     "client": "react-scripts start",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "build": "react-scripts build",
