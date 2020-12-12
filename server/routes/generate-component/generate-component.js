@@ -16,7 +16,7 @@ const { GENERATED_PATH } = require("../../../generate-path");
 router.post("/", (req, res) => {
 	try {
 		const generatedComponent = [];
-		req.body.forEach((element) => {
+		req.body.pages.forEach((element, index) => {
 			const componentName = pascalCase(element.name);
 			const componentPath = GENERATED_PATH;
 
@@ -28,11 +28,12 @@ router.post("/", (req, res) => {
 				componentPath + componentName + ".js",
 				generateComponentTemplate(element)
 			);
-
-			fs.writeFileSync(
-				componentPath + "Preview.js",
-				generatePreviewTemplate(componentName)
-			);
+			if (index == req.body.selectedPageIndex) {
+				fs.writeFileSync(
+					componentPath + "Preview.js",
+					generatePreviewTemplate(componentName)
+				);
+			}
 
 			generatedComponent.push({ componentPath, componentName });
 		});
