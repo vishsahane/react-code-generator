@@ -39,7 +39,7 @@ export const CONTROLS = [
       { label: 'id', name: 'id', type: 'text', required: false, value: '' },
       { label: 'className', name: 'className', type: 'text', required: false, value: '' },
       { label: 'Custom Style', name: 'style', type: 'object', required: false, value: '' },
-      { label: 'Placeholder', name: 'placeholder', type: 'string', required: false, value: '' },
+      { label: 'Placeholder', name: 'placeholder', type: 'text', required: false, value: '' },
       {
         label: 'type', name: 'type', type: 'dropdown', required: false, value: '',
         options: [{ label: 'text', value: 'text' }, { label: 'number', value: 'number' },
@@ -66,7 +66,7 @@ export const CONTROLS = [
       { label: 'cols', name: 'cols', type: 'text', required: false, value: '' },
       { label: 'className', name: 'className', type: 'text', required: false, value: '' },
       { label: 'Custom Style', name: 'style', type: 'object', required: false, value: '' },
-      { label: 'Placeholder', name: 'placeholder', type: 'string', required: false, value: '' },
+      { label: 'Placeholder', name: 'placeholder', type: 'text', required: false, value: '' },
       {
         label: 'disabled', name: 'disabled', type: 'dropdown', required: false, value: '',
         options: [{ label: 'Yes', value: true }, { label: 'No', value: false }]
